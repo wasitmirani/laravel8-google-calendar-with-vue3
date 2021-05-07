@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Spatie\GoogleCalendar\Event;
@@ -11,6 +12,7 @@ class GoogleCalendarController extends Controller
     //
 
     public function index(){
+
         $events = Event::get();
         return Inertia::render('GoogleComponent', [
             'events' => collect($events)->map(function ($event) {
@@ -40,6 +42,11 @@ class GoogleCalendarController extends Controller
     public function store(Request $request)
     {
         //
+        // Event::create([
+        //     'name' => 'A new event from Laravel & vue3 with Inertia js',
+        //     'startDateTime' => Carbon\Carbon::now(),
+        //     'endDateTime' => Carbon\Carbon::now()->addHour(),
+        //  ]);
     }
 
     /**
